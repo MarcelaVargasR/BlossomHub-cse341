@@ -3,6 +3,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./utils/swagger");
 const errorHandler = require("./middleware/errorHandler");
 const routes = require("./routes/index");
+const fs = require("fs");
 
 // You should no longer have imports for:
 // const authRoutes = require('./routes/authRoutes');
@@ -31,6 +32,8 @@ app.use("/api", routes);
 
 // Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+fs.writeFileSync("./swagger.json", JSON.stringify(swaggerSpec, null, 2));
+console.log("swagger.json has been saved!");
 
 // Health check endpoint
 app.get("/", (req, res) => {
