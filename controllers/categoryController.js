@@ -116,8 +116,6 @@ const deleteCategoryById = async (req, res, next) => {
 
 
 
-
-
 module.exports = {
   getCategories,
   getCategoryById,
