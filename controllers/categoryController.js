@@ -1,7 +1,5 @@
 const Category = require("../models/Category");
 
-
-
 /**
 * @desc    Get all categories
 * @route   GET /categories
@@ -19,7 +17,6 @@ const getCategories = async (req, res, next) => {
     next(err); // Pass error to centralized error handler
   }
 };
-
 
 
 /**
@@ -47,7 +44,6 @@ const getCategoryById = async (req, res, next) => {
     next(err); // Pass error to centralized error handler
   }
 };
-
 
 
 /**
