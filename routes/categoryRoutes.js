@@ -7,6 +7,13 @@ const {
   updateCategoryById,
   deleteCategoryById,
 } = require("../controllers/categoryController");
+const { validateData } = require("../middleware/validateData");
+const {
+  createCategorySchema,
+} = require("../validators/category/createCategorySchema");
+const {
+  updateCategorySchema,
+} = require("../validators/category/updateCategorySchema");
 
 /**
  * @swagger
@@ -122,8 +129,7 @@ router.get("/:id", getCategoryById);
  *       500:
  *         description: Internal server error
  */
-router.post("/", createCategory);
-
+router.post("/", validateData(createCategorySchema), createCategory);
 
 /**
  * @swagger
@@ -177,9 +183,7 @@ router.post("/", createCategory);
  *       500:
  *         description: Internal server error
  */
-router.put("/:id", updateCategoryById);
-
-
+router.put("/:id", validateData(updateCategorySchema), updateCategoryById);
 
 /**
  * @swagger
@@ -213,6 +217,6 @@ router.put("/:id", updateCategoryById);
  *       500:
  *         description: Internal server error
  */
-router.delete("/:id", deleteCategoryById)
+router.delete("/:id", deleteCategoryById);
 
 module.exports = router;
