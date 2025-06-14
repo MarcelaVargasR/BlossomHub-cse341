@@ -5,10 +5,10 @@ const errorHandler = require("./middleware/errorHandler");
 const routes = require("./routes/index");
 
 // You should no longer have imports for:
-// const authRoutes = require('./routes/authRoutes');
-// const userRoutes = require('./routes/userRoutes');
-// const wishlistRoutes = require('./routes/wishlistRoutes');
-// const orderRoutes = require('./routes/orderRoutes');
+ const authRoutes = require('./routes/authRoutes');
+ const userRoutes = require('./routes/userRoutes');
+ const wishlistRoutes = require('./routes/wishlistRoutes');
+ const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 
@@ -24,10 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", routes);
 
 // You should no longer have mountings for:
-// app.use('/api/auth', authRoutes);
-// app.use('/api/users', userRoutes);
-// app.use('/api/wishlist', wishlistRoutes);
-// app.use('/api/orders', orderRoutes);
+ app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+ app.use('/api/wishlist', wishlistRoutes);
+ app.use('/api/orders', orderRoutes);
 
 // Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
