@@ -14,6 +14,7 @@ const {
 const {
   updateFlowerSchema,
 } = require("../validators/flower/updateFlowerSchema");
+const {isAuthenticated} = require("../middleware/isAuthenticated")
 
 /**
  * @swagger
@@ -75,7 +76,7 @@ const {
  *       500:
  *         description: Server error
  */
-router.get("/", getFlowers);
+router.get("/",isAuthenticated, getFlowers);
 
 /**
  * @swagger
@@ -301,6 +302,6 @@ router.put("/:id", validateData(updateFlowerSchema), updateFlowerById);
  *       500:
  *         description: Internal server error
  */
-router.delete("/:id", deleteFlowerById);
+router.delete("/:id",isAuthenticated, deleteFlowerById);
 
 module.exports = router;

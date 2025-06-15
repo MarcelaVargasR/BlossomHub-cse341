@@ -14,6 +14,7 @@ const {
 const {
   updateCategorySchema,
 } = require("../validators/category/updateCategorySchema");
+const { isAuthenticated } = require("../middleware/isAuthenticated");
 
 /**
  * @swagger
@@ -129,7 +130,12 @@ router.get("/:id", getCategoryById);
  *       500:
  *         description: Internal server error
  */
-router.post("/", validateData(createCategorySchema), createCategory);
+router.post(
+  "/",
+  isAuthenticated,
+  validateData(createCategorySchema),
+  createCategory
+);
 
 /**
  * @swagger
@@ -217,6 +223,6 @@ router.put("/:id", validateData(updateCategorySchema), updateCategoryById);
  *       500:
  *         description: Internal server error
  */
-router.delete("/:id", deleteCategoryById);
+router.delete("/:id", isAuthenticated, deleteCategoryById);
 
 module.exports = router;

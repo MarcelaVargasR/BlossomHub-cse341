@@ -63,6 +63,8 @@ const createCategory = async (req, res, next) => {
     res.json(newCategory);
 
   } catch (error) {
+    console.log("🚀 ~ createCategory ~ error:", error)
+    
     next(error);
   }
 };

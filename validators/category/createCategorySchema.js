@@ -5,4 +5,4 @@ const createCategorySchema = joi.object({
   description: joi.string().optional(),
 });
 
-module.export = { createCategorySchema };
+module.exports = { createCategorySchema };

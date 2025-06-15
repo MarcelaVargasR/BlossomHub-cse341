@@ -5,4 +5,4 @@ const updateCategorySchema = joi.object({
   description: joi.string().optional(),
 });
 
-module.export = { updateCategorySchema };
+module.exports = { updateCategorySchema };

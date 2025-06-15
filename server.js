@@ -1,27 +1,5 @@
-const express = require("express");
-const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("./utils/swagger");
-const errorHandler = require("./middleware/errorHandler");
-const routes = require("./routes/index");
+const { app } = require("./app");
 
-const app = express();
-
-// Middleware for parsing JSON request bodies
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// API Routes
-app.use("/api", routes);
-
-// Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// Health check endpoint
-app.get("/", (req, res) => {
-  res.send("BlossomHub API is running!");
+app.listen(3001, () => {
+  console.log("running on port 3001");
 });
-
-// Centralized error handling middleware
-app.use(errorHandler);
-
-module.exports = app;
