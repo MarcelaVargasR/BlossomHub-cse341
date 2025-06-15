@@ -10,8 +10,8 @@ const user = require("./userRoutes")
 router.use("/categories", categoryRoutes);
 router.use("/flowers", flowerRoutes)
 router.use("/auth", authRoutes)
-router.use("/order", order)
-router.use("user", user)
+router.use("/orders", order)
+router.use("/users", user)
 
 
 module.exports  = router

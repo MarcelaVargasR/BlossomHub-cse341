@@ -26,7 +26,7 @@ exports.getUsers = async (req, res, next) => {
   // This route should be protected by middleware that checks for 'admin' role
   try {
     // Find all users and exclude sensitive fields like googleId or password hash if you add one later
-    const users = await User.find().select("-googleId");
+    const users = await User.find();
 
     res.status(200).json({
       success: true,
@@ -53,10 +53,10 @@ exports.getUserById = async (req, res, next) => {
           error: "Not authorized, no user session found.",
         });
       }
-      user = await User.findById(req.user.id).select("-googleId");
+      user = await User.findById(req.user.id);
     } else {
       // Otherwise, retrieve by the ID provided in the URL parameter
-      user = await User.findById(req.params.id).select("-googleId");
+      user = await User.findById(req.params.id);
     }
 
     if (!user) {
@@ -153,7 +153,7 @@ exports.updateUser = async (req, res, next) => {
       targetId,
       updates,
       { new: true, runValidators: true } // Return the updated document, run Mongoose validators
-    ).select("-googleId");
+    )
 
     res.status(200).json({
       success: true,

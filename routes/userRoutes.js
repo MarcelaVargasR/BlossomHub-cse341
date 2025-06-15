@@ -20,9 +20,9 @@ const { isAuthenticated } = require("../middleware/isAuthenticated");
 
 /**
  * @swagger
- * /users/github:
+ * /users:
  *   post:
- *     summary: Create a user from GitHub OAuth
+ *     summary: Create a user 
  *     tags: [Users]
  *     security:
  *       - BearerAuth: []
@@ -87,7 +87,7 @@ router.get("/", isAuthenticated, getUsers);
  * @swagger
  * /users/{id}:
  *   get:
- *     summary: Get a user by ID or 'me' for current user
+ *     summary: Get a user by ID
  *     tags: [Users]
  *     security:
  *       - BearerAuth: []
@@ -119,7 +119,7 @@ router.get("/:id", getUserById);
  * @swagger
  * /users/{id}:
  *   put:
- *     summary: Update user by ID or 'me' for current user
+ *     summary: Update user by ID 
  *     tags: [Users]
  *     security:
  *       - BearerAuth: []

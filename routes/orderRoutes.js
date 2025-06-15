@@ -71,7 +71,7 @@ router.get("/", isAuthenticated, getOrders);
  *       404:
  *         description: Order not found
  */
-router.get("/:id", isAuthenticated, getOrderById);
+router.get("/:id", getOrderById);
 
 /**
  * @swagger
@@ -120,7 +120,7 @@ router.get("/:id", isAuthenticated, getOrderById);
  *       201:
  *         description: Order created successfully
  */
-router.post("/", isAuthenticated, createOrder);
+router.post("/", createOrder);
 
 /**
  * @swagger
@@ -155,7 +155,7 @@ router.post("/", isAuthenticated, createOrder);
  *       404:
  *         description: Order not found
  */
-router.put("/:id/status", isAuthenticated, updateOrderStatus);
+router.put("/:id/status", updateOrderStatus);
 
 /**
  * @swagger

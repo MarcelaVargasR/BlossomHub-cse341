@@ -23,6 +23,7 @@ const getOrders = async (req, res, next) => {
       data: orders,
     });
   } catch (err) {
+    console.log("🚀 ~ getOrders ~ err:", err)
     next(err);
   }
 };

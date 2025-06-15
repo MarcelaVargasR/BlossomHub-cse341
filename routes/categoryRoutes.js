@@ -51,7 +51,7 @@ const { isAuthenticated } = require("../middleware/isAuthenticated");
  *       500:
  *         description: Server error
  */
-router.get("/", getCategories);
+router.get("/", isAuthenticated, getCategories);
 
 /**
  * @swagger
@@ -133,7 +133,6 @@ router.get("/:id", getCategoryById);
  */
 router.post(
   "/",
-  isAuthenticated,
   validateData(createCategorySchema),
   createCategory
 );
