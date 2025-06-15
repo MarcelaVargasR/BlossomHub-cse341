@@ -147,7 +147,9 @@ const options = {
 
   apis: [
     './routes/flowerRoutes.js',
+    './routes/orderRoutes.js',
     './routes/categoryRoutes.js',
+    './routes/userRoutes.js',
     './models/*.js',
   ],
 };
