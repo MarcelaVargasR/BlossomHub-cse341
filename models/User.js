@@ -1,11 +1,10 @@
-const { string } = require('joi');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     googleId: {
         type: String,
         unique: true,
-        sparse: true, // Allows null values, so users without GoogleId can exist if you add other auth methods later
+        sparse: true, 
     },
     githubId: {
         type: String,

@@ -8,8 +8,6 @@ const {
   createUser
 } = require("../controllers/userController");
 const { isAuthenticated } = require("../middleware/isAuthenticated");
-// Optional: Add isAdmin middleware if available
-// const { isAdmin } = require("../middleware/isAdmin");
 
 /**
  * @swagger
@@ -50,7 +48,7 @@ const { isAuthenticated } = require("../middleware/isAuthenticated");
  *         description: Internal server error
  */
 
-router.post("/github", isAuthenticated, createUser);
+router.post("/github", createUser);
 
 /**
  * @swagger

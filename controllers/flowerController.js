@@ -121,7 +121,6 @@ const updateFlowerById = async (req, res, next) => {
     const updateFlower = await Flower.findByIdAndUpdate(flowerId, body, {
       new: true,
     });
-    console.log("====>",updateFlower);
 
     res.json(updateFlower);
   } catch (error) {

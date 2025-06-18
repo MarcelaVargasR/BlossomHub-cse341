@@ -23,9 +23,7 @@ exports.createUser = async (req, res, next) => {
 // @route   GET /api/users
 // @access  Private (Admin only)
 exports.getUsers = async (req, res, next) => {
-  // This route should be protected by middleware that checks for 'admin' role
   try {
-    // Find all users and exclude sensitive fields like googleId or password hash if you add one later
     const users = await User.find();
 
     res.status(200).json({
@@ -34,7 +32,7 @@ exports.getUsers = async (req, res, next) => {
       data: users,
     });
   } catch (error) {
-    next(error); // Pass error to the centralized error handler
+    next(error); 
   }
 };
 
@@ -90,7 +88,21 @@ exports.getUserById = async (req, res, next) => {
 // @access  Private (Admin or owner of the profile)
 exports.updateUser = async (req, res, next) => {
   try {
-    let user;
+    const userId = req.params.id
+    const user = await User.findById(userId)
+    if(!user){
+      return res.status(404).json({
+        success: false,
+        error: "User not found"
+      })
+    }
+
+    const body = req.body
+    const updatedUser = await User.findByIdAndUpdate(user.id, body, {new: true})
+
+    return res.json(updatedUser)
+
+    // let user;
     const targetId = req.params.id === "me" ? req.user.id : req.params.id;
 
     if (!req.user || !req.user.id) {
