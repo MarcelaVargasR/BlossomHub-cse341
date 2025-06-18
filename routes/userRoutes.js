@@ -54,7 +54,7 @@ router.post("/github", createUser);
  * @swagger
  * /users:
  *   get:
- *     summary: Get all users (Admin only)
+ *     summary: Get all users
  *     tags: [Users]
  *     security:
  *       - BearerAuth: []
@@ -117,7 +117,7 @@ router.get("/:id", getUserById);
  * @swagger
  * /users/{id}:
  *   put:
- *     summary: Update user by ID 
+ *     summary: Update user by ID (Admin only)
  *     tags: [Users]
  *     security:
  *       - BearerAuth: []
